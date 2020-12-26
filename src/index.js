@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Potato from './Potato';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Potato /> <App /> 
+    {/* 
+    App / <이거를 컴포넌트라고 부름 컴포넌트는 HTML을 반환하는 함수 (App.js의 App 함수!) 
+    JSX  리액트에 특화된 개념. 자바스크립트에서 리액트 쓸때 사용하는..
+    */}
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('potato')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
