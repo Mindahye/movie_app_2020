@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Movie from './Movie';
 
 class App extends React.Component{
   state = {
@@ -7,16 +8,40 @@ class App extends React.Component{
     movies: []
   };
   getMovies = async () => {
-    const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    const { 
+      data: {
+        data: {movies}
+      }
+    } = await axios.get(
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+    );
+    //ES6에서는 movies.data.data.movies이걸 위와 같이 선언.. wow
+    //this.setState({movies:movies}) 
+    //앞의 movies는 setState / 뒤는 axios 아래처럼 movies 한번만 써도 사용가능
+    this.setState({ movies, isLoading: false });
   }
   componentDidMount(){
     this.getMovies();
   }
   //render 하면 호출되는 Life cycle method => componetDidMount
   render(){
-    const { isLoading } = this.state;
+    const { isLoading, movies } = this.state;
     return (
-      <div>{isLoading ? "Loading..." : "We are ready"}</div>
+      <div>
+        {isLoading 
+          ? "Loading..." 
+          : movies.map(movie => (
+             <Movie 
+             key={movie.id} //키값은 유일한 값
+               id={movie.id} 
+               year={movie.year} 
+               title={movie.title} 
+               summary={movie.summary} 
+               poster={movie.medium_cover_image} 
+             />
+            )
+        )}
+      </div>
       );
     }
   }
