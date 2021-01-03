@@ -59,7 +59,7 @@ class Home extends React.Component {
   }
 }
 
-export default App;
+export default Home;
 
 //axios는 fetch 위에 있는 작은 layer라고 생각하면됨..
 //axios는 느릴 수 있기 때문에 componentdidmount에 함수가 끝날때까지 시간이 걸린다는걸 알려야함
