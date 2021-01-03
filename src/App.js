@@ -16,7 +16,7 @@ function App() {
       <Route path="/" exact={true} component={Home} />
       {/* exact는 path가 / 일때만 본다 */}
       <Route path="/about" component={About} />
-      <Route path="/movie-detail" component={Detail} />
+      <Route path="/movie/:id" component={Detail} />
     </HashRouter>
   );
 }

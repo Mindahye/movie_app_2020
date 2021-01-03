@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Movie.css';
 
-function Movie({ year, title, summary, poster, genres }) {
+function Movie({ id, year, title, summary, poster, genres }) {
   return (
     <Link
       to={{
-        pathname: '/movie-detail',
+        pathname: `/movie/${id}`,
+        // 콜론 아니고 1옆에있는 `로 해야함
         state: {
           year,
           title,
